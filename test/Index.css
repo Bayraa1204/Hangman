@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+Body {
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+div { width: 250px; height: 125px; background-color: coral; display: flex;}
+
+
+@media only screen and (max-width: 1024px) {
+    Body {background-color: darkcyan;}
+    div { width: 250px; height: 125px; background-color: coral; display: flex; justify-content: center; align-items: center;}
+}
+@media only screen and (max-width: 768px) {
+    Body {background-color: rgb(34, 155, 42); display: flex; flex-direction: column; align-items: center; justify-content: flex-start;}
+}
+@media only screen and (max-width: 480px) {
+    Body {background-color: rgb(217, 221, 0);}
+}
