@@ -1,39 +1,13 @@
 const alphabet = document.getElementById("alphabet");
 alphabet.className = "alphabet";
-let letters = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
+let letters = "abcdefghijklmnopqrstuvwxyz";
 const output = document.getElementById("output");
 const lives = document.createElement("div");
+lives.className = "lives";
 document.body.appendChild(lives);
 
 let result = 10;
-setInterval(isUpdating, 10);
+interVal = setInterval(isUpdating, 10);
 function isUpdating() {
   lives.innerHTML = `You have ${result} lives left`;
 }
@@ -43,33 +17,57 @@ for (let i = 0; i < letters.length; i++) {
   container.className = "box";
   container.id = i;
   container.addEventListener("click", function () {
-    console.log(output.innerHTML.includes(letters[i]));
+    container.style.opacity = "0.25";
     if (secretWord.includes(letters[i])) {
-      if (output.innerHTML.includes(letters[i])) {
-        for (let j = 0; j < secretWord.length; j++) {
-          console.log(secretWord[j] == letters[i]);
-          if (secretWord[j] == letters[i]) {
-            const letter = document.getElementById(secretWord[j]);
-            letter.innerHTML = secretWord[j];
+      for (let j = 0; j < secretWord.length; j++) {
+        if (secretWord[j].includes(letters[i])) {
+          const secretLength = document.getElementsByClassName(
+            secretWord[j]
+          ).length;
+          for (let l = 0; l < secretLength; l++) {
+            document.getElementsByClassName(secretWord[j])[l].innerHTML =
+              secretWord[j];
           }
         }
-      } else {
+        console.log(document.getElementsByClassName(secretWord[j]).length);
       }
     } else {
-      if (result <= 0) {
+      if (result <= 1) {
+        gameOver();
+        clearInterval(interVal);
       } else {
-        console.log("-1");
-        result = result - 1;
+        result--;
+      }
+      if (a) {
       }
     }
+    container.disabled = true;
   });
   alphabet.appendChild(container);
 }
-const secretWord = `windex`;
-
+function gameOver() {
+  const newText = document.createTextNode(
+    `Game Over.............. The Word was: ${secretWord}`
+  );
+  lives.innerHTML = "";
+  lives.appendChild(newText);
+}
+const choices = [
+  "cocacola",
+  "sprite",
+  "fanta",
+  "lipton",
+  "fuzetea",
+  "mounteindew",
+  "calpis",
+  "pepsi",
+  "mirinda",
+  "vibez"
+];
+const secretWord = choices[Math.floor(Math.random() * choices.length)];
 for (let i = 0; i < secretWord.length; i++) {
   const replacement = document.createElement("div");
-  replacement.className = "secretWord";
-  replacement.id = secretWord[i];
+  replacement.className = secretWord[i];
+  replacement.id = "secretWord";
   output.appendChild(replacement);
 }
