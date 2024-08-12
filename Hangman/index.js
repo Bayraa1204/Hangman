@@ -43,12 +43,17 @@ for (let i = 0; i < letters.length; i++) {
   container.className = "box";
   container.id = i;
   container.addEventListener("click", function () {
+    console.log(output.innerHTML.includes(letters[i]));
     if (secretWord.includes(letters[i])) {
       if (output.innerHTML.includes(letters[i])) {
-      } else {
-        for(let j = 0; j < secretWord.length; j++) {
-            
+        for (let j = 0; j < secretWord.length; j++) {
+          console.log(secretWord[j] == letters[i]);
+          if (secretWord[j] == letters[i]) {
+            const letter = document.getElementById(secretWord[j]);
+            letter.innerHTML = secretWord[j];
+          }
         }
+      } else {
       }
     } else {
       if (result <= 0) {
@@ -65,6 +70,6 @@ const secretWord = `windex`;
 for (let i = 0; i < secretWord.length; i++) {
   const replacement = document.createElement("div");
   replacement.className = "secretWord";
+  replacement.id = secretWord[i];
   output.appendChild(replacement);
-};
-
+}
