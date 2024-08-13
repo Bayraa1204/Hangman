@@ -50,14 +50,43 @@ body {
   border-bottom: 2px solid white;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .lives {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
-  height: 200px;
   display: flex;
   flex-direction: column;
+}
+#won {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(154, 203, 81);
+}
+#picture {
+  background-size: cover;
+  background-color: inherit;
+  border: none;
+  width: 200px;
+  height: 100px;
+}
+#playagain {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  background-color: inherit;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  border-left: none;
+  border-right: none;
+}
+#over {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
